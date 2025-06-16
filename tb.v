@@ -4,7 +4,7 @@ module tb();
 
     // Frequência reduzida para simulação rápida
     localparam CLK_FREQ = 8; // reduzido
-    localparam QUARTER_SECOND = CLK_FREQ / 4;
+    localparam ONE_SECOND = CLK_FREQ;
 
     reg clk;
     reg rst_n;
@@ -38,28 +38,28 @@ module tb();
             $display("ERRO: valor obtido: %h, valor experado: %h", leds, 8'h1F);
 
         // TESTE 2: 1 rotação (deveria ser 0x3E)
-        #(QUARTER_SECOND); // tempo para uma troca (CLK_FREQ / 4 * 1 = 2 ciclos)
+        #(ONE_SECOND * 2); // tempo para uma troca (CLK_FREQ / 4 * 1 = 2 ciclos)
         if (leds == 8'h3E)
             $display("OK");
         else
             $display("ERRO: valor obtido: %h, valor experado: %h", leds, 8'h3E);
 
         // TESTE 3: 2 rotações (deveria ser 0x7C)
-        #(QUARTER_SECOND * 2);
+        #(ONE_SECOND * 2);
         if (leds == 8'h7C)
             $display("OK");
         else
             $display("ERRO: valor obtido: %h, valor experado: %h", leds, 8'h7C);
 
         // TESTE 4: 3 rotações (deveria ser 0xF8)
-        #(QUARTER_SECOND * 2);
+        #(ONE_SECOND * 2);
         if (leds == 8'hF8)
             $display("OK");
         else
             $display("ERRO: valor obtido: %h, valor experado: %h", leds, 8'hF8);
 
         // TESTE 5: 4 rotações (deveria ser 0xF1)
-        #(QUARTER_SECOND * 2);
+        #(ONE_SECOND * 2);
         if (leds == 8'hF1)
             $display("OK");
         else
