@@ -10,7 +10,7 @@ module LedShifter #(
     reg [7:0] led_reg;
     
     // Contador para controlar o tempo de deslocamento
-    reg [$clog2(CLK_FREQ)-1:0] counter;
+    reg [31:0] counter;
 
     // Valor inicial dos LEDS
     localparam INITIAL_LEDS = 8'h1F; // 0b00011111
